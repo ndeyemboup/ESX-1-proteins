@@ -101,7 +101,7 @@ colnames(data) <- c("recipient", "Gene_name", "Mutation")
 data <- subset(data, select = c("Mutation", "Position"))
 colnames(data) <- c("Mutation", "recipient")
 
-
+#group the mutations
 grouped_mutations <- data %>%
   group_by(recipient, Mutation) %>%
   dplyr::summarise(n = n()) %>%
@@ -221,6 +221,7 @@ write.csv(sorted_data, "merged_data_phoR.csv", row.names = FALSE)
 
 ______________________________
 
+#sort data of interest
 subset_data_phoR_chainA <- sorted_data %>% 
   select(Residues, `Chain ID`, Snpcount, SNP_GOIs, Bsascores, Observed_mutations, SAA, BSA, SE, HSDC) %>%
   filter(`Chain ID` == "chain A") %>% 
@@ -271,7 +272,7 @@ subset_data_phoR_chainA$DistanceÅ <- c(2.50, 3.74, 2.79, 3.75, 2.86, 2.78, 3.81
                                        2.85, 2.71)
 subset_data_phoR_chainB$DistanceÅ <- c(2.79, 3.81, 3.74, 2.50, 2.85, 2.71, 2.76, 2.96, 2.77, 3.13, 3.14, 3.75,
                                        2.86, 2.78)
-
+#merge the data of interest
 merged_data_total <- merge(subset_data_phoR_chainA, subset_data_phoR_chainB, by = "DistanceÅ") 
 
 colnames(merged_data_total) <- c("DistanceÅ", "Residue_ChainA", "Chain ID", "Snpcount_ChainA", "SNP_GOIs_ChainA", "Bsascores_ChainA", "Observed_mutations_ChainA", "SAA_ChainA", "BSA_ChainA", "SE_ChainA", "HSDC_ChainA",
