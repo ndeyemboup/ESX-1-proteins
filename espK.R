@@ -3,7 +3,7 @@ getwd()
 list.files(getwd())
 
 # Read the data from a text file with tab-separated values
-data <- read.delim("phop snp.txt" , header = FALSE, sep = "\t")
+data <- read.delim("espK #snp.txt", header = FALSE, sep = "\t")
 
 # Remove the colon from the first column and convert to numeric
 data$V1 <- as.numeric(gsub(":", "", data$V1))
@@ -20,3 +20,14 @@ total_snps <- sum(data$SNP, na.rm = TRUE)
 # Retrieve residues with more than 0 SNPs
 residues_with_snps <- data$Residues[data$SNP > 0]
 residues_with_snps <- length(residues_with_snps)
+
+residues_with_snps1 <- sum(data$SNP > 0, na.rm = TRUE)
+proportion_mutated_residues <- (residues_with_snps1 / total_residues) * 100
+
+
+
+
+
+
+
+

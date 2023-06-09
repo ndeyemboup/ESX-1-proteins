@@ -3,7 +3,7 @@ getwd()
 list.files(getwd())
 
 # Read the data from a text file with tab-separated values
-data <- read.delim("phop snp.txt" , header = FALSE, sep = "\t")
+data <- read.delim("esxA #snp.txt", header = FALSE, sep = "\t")
 
 # Remove the colon from the first column and convert to numeric
 data$V1 <- as.numeric(gsub(":", "", data$V1))
